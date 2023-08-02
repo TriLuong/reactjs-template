@@ -2,6 +2,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "@/pages/authentication/Login";
 import Signup from "@/pages/authentication/Signup";
+import { useEffect } from "react";
+import { useDispatch } from "./stores";
+import { appActions } from "./stores/app";
 
 const App = (props: any) => {
   const {
@@ -13,6 +16,13 @@ const App = (props: any) => {
     rtl,
     fontType,
   } = props;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(appActions?.loadApp());
+    dispatch(appActions?.getConstants());
+  }, []);
 
   return (
     <div
