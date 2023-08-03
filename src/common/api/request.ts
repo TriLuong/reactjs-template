@@ -4,7 +4,7 @@ import cloneDeep from "lodash/cloneDeep";
 import { stringify } from "qs";
 import { appActions } from "@/stores/app";
 import { store } from "@/stores";
-import { ROUTE } from "@/common/constants/routes";
+import { ROUTE_PATH } from "@/common/constants/routes";
 import config from "@/config";
 import { profileActions } from "@/stores/profile";
 import { ILoginResponse } from "@/types/app";
@@ -85,7 +85,7 @@ const request = (
         store.dispatch(appActions.onLogout());
         store.dispatch(profileActions.onLogout());
         // TODO
-        history.push(ROUTE.UN_AUTHENTICATED);
+        history.push(ROUTE_PATH.UN_AUTHENTICATED);
       }
 
       if (status <= 504 && status >= 500) {
