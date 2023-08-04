@@ -5,7 +5,7 @@ import Signup from "@/pages/authentication/Signup";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "./stores";
 import { appActions } from "./stores/app";
-import { ROUTE_PATH } from "./common/constants/routes";
+import { ROUTES, ROUTE_PATH } from "./common/constants/routes";
 import Layout from "./components/Shared/Layout";
 import Dashboard from "./pages/authenticated/Dashboard";
 
@@ -37,12 +37,23 @@ const App = (props: any) => {
     >
       <Router>
         <Routes>
-          <Route path={ROUTE_PATH.SIGN_UP} Component={Signup} />
-          <Route path={ROUTE_PATH.LOGIN} Component={Login} />
+          <Route path={"*"} element={<Layout />} />
+
+          <Route path={ROUTE_PATH.SIGN_UP} element={<Signup />} />
+          <Route path={ROUTE_PATH.LOGIN} element={<Login />} />
           {/* <Route path="/forgotpassword" Component={ForgotPassword} />
           <Route path="/notfound" Component={NotFound} />
           <Route path="/internalserver" Component={InternalServer} /> */}
-          <Route path={ROUTE_PATH.AUTHENTICATED} Component={Layout} />
+          {/* {ROUTES.map((layout, i) => {
+            return (
+              <Route
+                key={i}
+                // exact={layout.exact}
+                path={layout.path}
+                Component={layout.component}
+              ></Route>
+            );
+          })} */}
         </Routes>
       </Router>
     </div>

@@ -1,4 +1,6 @@
+import Dashboard from "@/pages/authenticated/Dashboard";
 import Menu from "./Menu";
+import { Link, Route, Routes } from "react-router-dom";
 
 const Layout = (props: any) => {
   return (

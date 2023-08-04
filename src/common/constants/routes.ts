@@ -1,3 +1,4 @@
+import Layout from "@/components/Shared/Layout";
 import Dashboard from "@/pages/authenticated/Dashboard";
 import Login from "@/pages/authentication/Login";
 import Signup from "@/pages/authentication/Signup";
@@ -20,12 +21,19 @@ export enum ROUTE_PATH {
 
 export const ROUTES = [
   // {
-  //   path: ROUTE_PATH.DASHBOARD,
+  //   path: ROUTE_PATH.AUTHENTICATED,
   //   name: "dashboard",
   //   exact: true,
   //   pageTitle: "HR Dashboard",
-  //   component: Dashboard,
+  //   component: Layout,
   // },
+  {
+    path: ROUTE_PATH.DASHBOARD,
+    name: "dashboard",
+    exact: true,
+    pageTitle: "HR Dashboard",
+    component: Dashboard,
+  },
 
   {
     path: ROUTE_PATH.LOGIN,

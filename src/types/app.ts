@@ -40,3 +40,16 @@ export interface IVerifyEmailOTPForm {
 export interface IForgotPasswordForm {
   otp: string;
 }
+
+export interface IMenuItem {
+  id: string;
+  icon?: string;
+  iconDetails?: string;
+  name?: string;
+  nameDetails?: string;
+  route: string;
+  breadcrumbParentId?: string;
+  menuParentId?: string;
+}
+
+export type IMenus = IMenuItem[];

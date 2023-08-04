@@ -9,6 +9,9 @@ import { ROUTES } from "@/common/constants/routes";
 import history from "@/common/history";
 import { settingsActions } from "@/stores/settings";
 import { useDispatch, useSelector } from "@/stores";
+import SiderMenu from "./SiderMenu";
+import menus from "@/common/constants/menus";
+import Dashboard from "@/pages/authenticated/Dashboard";
 
 const masterNone = {
   display: "none",
@@ -141,223 +144,6 @@ const Menu = (props: any) => {
       return e.visible ? "collapse" : "metismenu";
     }
   };
-
-  const content = [
-    {
-      id: "Directories",
-      label: "Directories",
-    },
-    {
-      id: 1,
-      icon: "icon-rocket",
-      label: "HRMS",
-      to: "#!",
-      content: [
-        {
-          id: 3,
-          label: "Dashboard",
-          to: "/",
-        },
-        {
-          id: 4,
-          label: "Users",
-          to: "/hr-users",
-        },
-        {
-          id: 5,
-          label: "Department",
-          to: "/hr-department",
-        },
-        {
-          id: 6,
-          label: "Employee",
-          to: "/hr-employee",
-        },
-        {
-          id: 7,
-          label: "Activities",
-          to: "/hr-activities",
-        },
-        {
-          id: 8,
-          label: "Holidays",
-          to: "/hr-holidays",
-        },
-        {
-          id: 9,
-          label: "Events",
-          to: "/hr-events",
-        },
-        {
-          id: 10,
-          label: "Payroll",
-          to: "/hr-payroll",
-        },
-        {
-          id: 11,
-          label: "Accounts",
-          to: "/hr-accounts",
-        },
-        {
-          id: 12,
-          label: "Report",
-          to: "/hr-report",
-        },
-      ],
-    },
-    {
-      id: 13,
-      icon: "icon-cup",
-      label: "Project",
-      content: [
-        {
-          id: 14,
-          label: "Dashboard",
-          to: "/project-dashboard",
-        },
-        {
-          id: 15,
-          label: "Project List",
-          to: "/project-list",
-        },
-        {
-          id: 16,
-          label: "Taskboard",
-          to: "/project-taskboard",
-        },
-        {
-          id: 17,
-          label: "Ticket List",
-          to: "/project-ticket",
-        },
-        {
-          id: 18,
-          label: "Ticket Details",
-          to: "/project-ticket-details",
-        },
-        {
-          id: 19,
-          label: "Clients",
-          to: "/project-clients",
-        },
-        {
-          id: 20,
-          label: "Todo List",
-          to: "/project-todo",
-        },
-      ],
-    },
-    {
-      id: 21,
-      icon: "icon-briefcase",
-      label: "Job Portal",
-      content: [
-        {
-          id: 22,
-          label: "Job Dashboard",
-          to: "/jobportal-dashboard",
-        },
-        {
-          id: 23,
-          label: "Positions",
-          to: "/jobportal-positions",
-        },
-        {
-          id: 24,
-          label: "Applicant",
-          to: "/jobportal-applicants",
-        },
-        {
-          id: 25,
-          label: "Resumes",
-          to: "/jobportal-resumes",
-        },
-        {
-          id: 26,
-          label: "Settings",
-          to: "/jobportal-settings",
-        },
-      ],
-    },
-    {
-      id: 27,
-      icon: "icon-lock",
-      label: "Authentication",
-      content: [
-        {
-          id: 28,
-          label: "Login",
-          to: "/login",
-        },
-        {
-          id: 29,
-          label: "Register",
-          to: "/signup",
-        },
-        {
-          id: 30,
-          label: "Forgot Password",
-          to: "/forgotpassword",
-        },
-        {
-          id: 31,
-          label: "404 error",
-          to: "/notfound",
-        },
-        {
-          id: 32,
-          label: "500 Error",
-          to: "/internalserver",
-        },
-      ],
-    },
-    {
-      id: "UiElements",
-      label: "Ui Elements",
-    },
-    {
-      id: 33,
-      icon: "icon-tag",
-      label: "Icons",
-      to: "/icons",
-    },
-    {
-      id: 34,
-      icon: "icon-bar-chart",
-      label: "Charts",
-      to: "/charts",
-    },
-    {
-      id: 35,
-      icon: "icon-layers",
-      label: "Forms",
-      to: "/forms",
-    },
-    {
-      id: 36,
-      icon: "icon-tag",
-      label: "Tables",
-      to: "/tables",
-    },
-    {
-      id: 37,
-      icon: "icon-puzzle",
-      label: "Widgets",
-      to: "/widgets",
-    },
-    {
-      id: 38,
-      icon: "icon-map",
-      label: "Maps",
-      to: "/maps",
-    },
-    {
-      id: 39,
-      icon: "icon-picture",
-      label: "Gallery",
-      to: "/gallery",
-    },
-  ];
 
   const {
     isMinSidebar: darkMinSidebar,
@@ -1208,6 +994,22 @@ const Menu = (props: any) => {
                 LinkComponent={(e: any) => <DefaultLink itemProps={e} />}
                 // toggleSubMenu={toggleSubMenu}
               /> */}
+              {/* <MenuAntd
+                // onClick={onClick}
+                style={{ width: 256 }}
+                defaultSelectedKeys={["1"]}
+                defaultOpenKeys={["sub1"]}
+                mode="inline"
+                items={content}
+              /> */}
+              <SiderMenu
+                menus={menus}
+                // theme={theme}
+                // isMobile={isMobile}
+                // collapsed={collapsed}
+                // onCollapseChange={onCollapseChange}
+                // role={role}
+              />
             </nav>
           </div>
         </div>
@@ -1217,14 +1019,14 @@ const Menu = (props: any) => {
             dataFromParent={dataFromParent}
             dataFromSubParent={pageHeading?.[0]?.pageTitle}
           />
+
           <Routes>
             {ROUTES.map((layout, i) => {
               return (
                 <Route
                   key={i}
-                  // exact={layout.exact}
                   path={layout.path}
-                  Component={layout.component}
+                  element={layout.component(props)}
                 ></Route>
               );
             })}
